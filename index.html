@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hafta 2 Gun 2</title>
+    <style>
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <button onclick="fetchData()">Getir</button>
+        <!--Todo-->
+        <input type = "checkbox" onclick="filterData('age')" id="filterButton" >
+        <label for="filterButton">yaş filtresi</label>
+        <input type = "checkbox" onclick="filterData('isActive')" id="filterButton" >
+        <label for="filterButton">Aktif İsim </label>
+        
+        <input type = "text" placeholder="isim"  onclick="filterData('name')" id="filterButton"  maxlength="1">
+        <ul class="list">
+            
+        </ul>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
