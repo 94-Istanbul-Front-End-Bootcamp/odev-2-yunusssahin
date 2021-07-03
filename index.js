@@ -1,4 +1,7 @@
 let data = []
+let filteredData1 = []
+let filteredData2 = []
+let filteredData3 = []
 
 const fetchData = () => {
     //verinin çekildiği yer
@@ -12,7 +15,6 @@ const fetchData = () => {
 
         //veri geldikten sonra filtreleme butonu görünür olsun
         let filterButton = document.querySelector("#filterButton");
-        console.log(filterButton);
         filterButton.setAttribute("style", "");
 
         //verinin html içerisinde listelendiği fonksiyon
@@ -42,18 +44,18 @@ const listData = (data) => {
 
 const filterData = (filter) => {
     switch (filter) {
-        case "isActive":
-            let filteredData1 = data.filter(element => element.isActive === true);
+        case "age":
+            filteredData1 = data.filter(element => element.age >= 18);
             listData(filteredData1);
             break;
-        case "age":
-            let filteredData2 = data.filter(element => element.age >= 18);
+        case "isActive":
+            filteredData2 = filteredData1.filter(element => element.isActive === true);
             listData(filteredData2);
             break;
         case "name":
-            let filteredData3 = data.filter(element => element.name     );
+            filteredData3 = filteredData2.filter(element => element.name.substr(0,1) == document.getElementsByClassName('class_name')[0].value);
             listData(filteredData3);
-            break;
+             break;
         default:
             break;
     }
