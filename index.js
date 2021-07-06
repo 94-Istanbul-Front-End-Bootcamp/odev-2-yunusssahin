@@ -1,27 +1,24 @@
 let data = []
-let filteredData1 = []
-let filteredData2 = []
-let filteredData3 = []
 
 const fetchData = () => {
     //verinin çekildiği yer
     fetch("/data.json")
-    .then(response => {
-        return response.json();
-    })
-    .then(responseData => {
-        //json'dan okunan verinin data array'ine atanması
-        data = responseData;
+        .then(response => {
+            return response.json();
+        })
+        .then(responseData => {
+            //json'dan okunan verinin data array'ine atanması
+            data = responseData;
 
-        //veri geldikten sonra filtreleme butonu görünür olsun
-        let filterButton = document.querySelector("#filterButton");
-        filterButton.setAttribute("style", "");
+            //veri geldikten sonra filtreleme butonu görünür olsun
+            let filterButton = document.querySelector("#filterButton");
+            filterButton.setAttribute("style", "");
 
-        //verinin html içerisinde listelendiği fonksiyon
-        listData(responseData);
-    })
-   
- 
+            //verinin html içerisinde listelendiği fonksiyon
+            listData(responseData);
+        })
+
+
 }
 
 //verinin ul tag'i içerisinde listelenmesini sağlayan fonksiyon
@@ -42,20 +39,42 @@ const listData = (data) => {
 //verinin filtrelenmesini sağlayan fonksiyon
 //TODO
 
-const filterData = (filter) => {
+const filterData = () => {
+    let filter;
+    let isim = document.getElementsByClassName("filterfilterButton3");
+    if (document.getElementsByClassName("filterButton2")[0].checked == true && document.getElementsByClassName("filterButton1")[0].checked == true) {
+        filter = "both1";
+    }else if (document.getElementsByClassName("filterButton2")[0].checked == true) {
+        filter = "isActive";
+    }else if (document.getElementsByClassName("filterButton1")[0].checked == true) {
+        filter = "age"
+    }else if (document.getElementsByClassName("filterButton2")[0].checked == true && document.getElementsByClassName("filterButton1")[0].checked == true && isim.value !="" ) {
+        filter = "both2"
+    }else {
+        filter = "name";
+    }
+    console.log(filter)
     switch (filter) {
         case "age":
             filteredData1 = data.filter(element => element.age >= 18);
             listData(filteredData1);
             break;
         case "isActive":
-            filteredData2 = filteredData1.filter(element => element.isActive === true);
+            filteredData2 = data.filter(element => element.isActive === true);
             listData(filteredData2);
             break;
         case "name":
-            filteredData3 = filteredData2.filter(element => element.name.substr(0,1) == document.getElementsByClassName('class_name')[0].value);
+            filteredData3 = data.filter(element => element.name.substr(0, 1) == document.getElementsByClassName('filterButton3')[0].value);
             listData(filteredData3);
-             break;
+            break;
+        case "both1":
+            filteredData4 = data.filter(element => element.age >= 18 && element.isActive === true);
+            listData(filteredData4);
+            break;
+        case "both2":
+            filterData5 = data.filter(element => element.age >= 18 && element.isActive === true && element.name[0] === isim.value);
+            listData(filteredData5);
+            break;
         default:
             break;
     }

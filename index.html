@@ -15,19 +15,19 @@
 
 <body>
     <div class="wrapper">
-        <button onclick="fetchData()">Getir</button>
-        <!--Todo-->
-        <input type = "checkbox" onclick="filterData('age')" id="filterButton" >
-        <label for="filterButton">yaş filtresi</label>
-        <input type = "checkbox" onclick="filterData('isActive')" id="filterButton" >
-        <label for="filterButton">Aktif </label>
-        <label for="filterButton">İsim </label>
-        <input type = "text" placeholder="isim" oninput="filterData('name')" id="abc" class="class_name" maxlength="1">
+        <input type="button" value="Getir" id="getir"
+            onclick="fetchData(); document.getElementById('filterButton').style.display = 'block'; this.style.display = 'none'" />
+        <button id="filterButton" style="display:none;" onclick="filterData()">Filtrele</button>
+        <input type="checkbox" id="filterButton1" class="filterButton1" value="age">
+        <label for="filterButton1" >Reşit Olanlar</label>
+        <input type="checkbox" id="filterButton2" class="filterButton2" value="isActive">
+        <label for="filterButton2">Aktiflik</label>
+        <label for="filterButton3">İsim </label>
+        <input type="text" placeholder="isim" id="filterButton3" class="filterButton3" maxlength="1">
         <ul class="list">
-            
+
         </ul>
     </div>
-    <script src="index.js"></script>
+    <script src="index.js"></script>  
 </body>
-
 </html>
